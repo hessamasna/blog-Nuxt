@@ -1,18 +1,16 @@
 <template>
-  <div class="rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl">
-    <img src="https://tailus.io/sources/blocks/twocards/preview/images/woman.jpg" alt="art cover" loading="lazy"
-         width="1000" height="667"
-         class="h-56 sm:h-full w-full sm:w-5/12 object-cover object-top rounded-r-lg transition duration-500 group-hover:rounded-xl">
-    <div class="sm:w-7/12 pl-0 p-5 flex flex-col">
+  <div class="rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 hover:shadow-xl shadow-md hover:rounded-2xl">
+    <img :src="post.introImageUrl.host" alt="art cover" loading="lazy"
+         width="300" height="667"
+         class="h-56  w-full sm:w-4/12 object-cover object-top  transition duration-500 rounded-r-xl">
+    <div class="md:w-7/12 pl0 p-3 flex flex-col">
       <div class="space-y-2 flex-1">
-        <div class="space-y-4">
-          <h4 class="text-2xl font-semibold text-cyan-900">Provident de illo eveniet commodi fuga fugiat laboriosam
-            expedita.</h4>
-          <p class="text-gray-600">Laborum saepe laudantium in, voluptates ex placeat quo harum aliquam totam, doloribus
-            eum impedit atque! Temporibus...</p>
+        <div class="space-y-2">
+          <h4 class="text font-bold text-md text-cyan-900">{{post.title}}</h4>
+          <p class="text-gray-500 text-sm text-overflow">{{post.body}}</p>
         </div>
       </div>
-      <div class="flex justify-between">
+      <div class="flex justify-between flex-col md:flex-row">
         <div class="flex gap-8 justify-self-start">
           <div class="flex items-center">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,8 +18,8 @@
                   d="M15.2501 2.33341H12.7501V1.08341C12.7501 0.972908 12.7062 0.866927 12.628 0.788787C12.5499 0.710647 12.4439 0.666748 12.3334 0.666748C12.2229 0.666748 12.1169 0.710647 12.0388 0.788787C11.9606 0.866927 11.9167 0.972908 11.9167 1.08341V2.33341H6.08342V1.08341C6.08342 0.972908 6.03952 0.866927 5.96138 0.788787C5.88324 0.710647 5.77726 0.666748 5.66675 0.666748C5.55624 0.666748 5.45026 0.710647 5.37212 0.788787C5.29398 0.866927 5.25008 0.972908 5.25008 1.08341V2.33341H2.75008C2.19775 2.33408 1.66823 2.55378 1.27767 2.94434C0.887116 3.3349 0.66741 3.86442 0.666748 4.41675V15.2501C0.66741 15.8024 0.887116 16.3319 1.27767 16.7225C1.66823 17.113 2.19775 17.3328 2.75008 17.3334H15.2501C15.8025 17.333 16.3321 17.1133 16.7227 16.7227C17.1133 16.3321 17.333 15.8025 17.3334 15.2501V4.41675C17.333 3.86435 17.1133 3.3347 16.7227 2.9441C16.3321 2.55349 15.8025 2.33386 15.2501 2.33341ZM16.5001 15.2501C16.5001 15.9401 15.9401 16.5001 15.2501 16.5001H2.75008C2.05841 16.5001 1.50008 15.9401 1.50008 15.2501V8.16675H16.5001V15.2501ZM16.5001 7.33342H1.50008V4.41675C1.50008 3.72675 2.05841 3.16675 2.75008 3.16675H5.25008V4.41675C5.25008 4.52726 5.29398 4.63324 5.37212 4.71138C5.45026 4.78952 5.55624 4.83342 5.66675 4.83342C5.77726 4.83342 5.88324 4.78952 5.96138 4.71138C6.03952 4.63324 6.08342 4.52726 6.08342 4.41675V3.16675H11.9167V4.41675C11.9167 4.52726 11.9606 4.63324 12.0388 4.71138C12.1169 4.78952 12.2229 4.83342 12.3334 4.83342C12.4439 4.83342 12.5499 4.78952 12.628 4.71138C12.7062 4.63324 12.7501 4.52726 12.7501 4.41675V3.16675H15.2501C15.9401 3.16675 16.5001 3.72675 16.5001 4.41675V7.33342Z"
                   fill="black"/>
             </svg>
-            <span class="text-sm mr-2">
-            20 اردیبهشت 1400
+            <span class="text-xs mr-1">
+              {{getDateFormat(post.updatedAt)}}
             </span>
           </div>
           <div class="flex items-center">
@@ -30,8 +28,8 @@
                   d="M3.68734 1.54167C3.16243 1.54167 2.65902 1.75019 2.28786 2.12135C1.91669 2.49252 1.70817 2.99593 1.70817 3.52083V9.97917C1.70817 10.5041 1.91669 11.0075 2.28786 11.3786C2.65902 11.7498 3.16243 11.9583 3.68734 11.9583H5.0415V15.2242L9.66775 11.9583H14.3123C14.8372 11.9583 15.3407 11.7498 15.7118 11.3786C16.083 11.0075 16.2915 10.5041 16.2915 9.97917V3.52083C16.2915 2.99593 16.083 2.49252 15.7118 2.12135C15.3407 1.75019 14.8372 1.54167 14.3123 1.54167H3.68734ZM0.666504 3.52083C0.666504 2.71966 0.984769 1.9513 1.55129 1.38478C2.1178 0.818266 2.88616 0.5 3.68734 0.5H14.3123C15.1135 0.5 15.8819 0.818266 16.4484 1.38478C17.0149 1.9513 17.3332 2.71966 17.3332 3.52083V9.97917C17.3332 10.7803 17.0149 11.5487 16.4484 12.1152C15.8819 12.6817 15.1135 13 14.3123 13H9.99859L5.47775 16.1908C4.85692 16.6292 3.99984 16.185 3.99984 15.425V13H3.68734C2.88616 13 2.1178 12.6817 1.55129 12.1152C0.984769 11.5487 0.666504 10.7803 0.666504 9.97917V3.52083Z"
                   fill="black"/>
             </svg>
-            <span class="text-xs mr-2">
-            10 نفر
+            <span class="text-xs mr-1">
+            {{post.commentCount}} نفر
             </span>
           </div>
           <div class="flex items-center">
@@ -41,23 +39,32 @@
                   stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
 
-            <span class="text-xs mr-2">
-            علی نسیمی
+            <span class="text-xs mr-1">
+            {{post.author}}
             </span>
           </div>
         </div>
-        <button>12</button>
+        <NuxtLink class="bg-green-500 px-8 rounded text-white py-1 hover:shadow-lg mt-4 md:mt-0" :to="`/blogs/${post._id}`"> بیشتر</NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "post"
+<script setup>
+const {post} = defineProps(['post'])
+
+function getDateFormat(uDate){
+  return new Intl.DateTimeFormat('fa-IR', {"month" : "long","year" : "numeric","day" : "2-digit"}).format(new Date(uDate));
 }
 </script>
 
 <style scoped>
-
+.text-overflow {
+  text-overflow:ellipsis;
+  overflow:hidden;
+display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
 </style>
